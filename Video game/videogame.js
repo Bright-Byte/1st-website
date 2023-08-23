@@ -1,9 +1,3 @@
-//game loading thing
-
-// HIGHSCORES:
-// TOM: 750!!!!!
-//JOSH: 630
-
 var config = {
     type: Phaser.AUTO,
     width: 800,
@@ -15,11 +9,7 @@ var config = {
             gravity: {
                 y: 800
             },
-            debug: false,
-            overlapBias: 8,
-            tileBias: 32,
-            fps: 60,
-            fixedStep: true
+            debug: false
         }
     },
     scene: {
@@ -30,6 +20,7 @@ var config = {
         end: end
     }
 };
+
 
 // Creates all game variables
 var game = new Phaser.Game(config);
@@ -51,16 +42,16 @@ function init() {}
 
 // Preloads all imgs
 function preload() {
-    this.load.image('star', 'game/images/coin-removebg-preview_1_1_34.png')
-    this.load.image('bground', 'game/images/Custom dimensions 800x600 px.png');
-    this.load.image('bomb', 'game/images/bomb sprite.png')
-    this.load.image('ground', 'game/images/Floor.PNG')
-    this.load.spritesheet('dude', 'game/images/george.png', {
+    this.load.image('star', 'images/coin-removebg-preview_1_1_34.png')
+    this.load.image('bground', 'images/Custom dimensions 800x600 px.png');
+    this.load.image('bomb', 'images/bomb.png')
+    this.load.image('ground', 'images/Floor.PNG')
+    this.load.spritesheet('dude', 'images/george.png', {
         frameWidth: 48,
-        frameHeight: 48,
+        frameHeight: 48
     });
-    this.load.image('bground2', 'game/images/DC4F2704-263F-465C-BAB8-5C15682682D8.jpeg')
-    this.load.audio('music', ['game/music/Y2Mate.is - Old RuneScape Soundtrack Sea Shanty2-BJhF0L7pfo8-48k-1654852079074.mp3'])
+    this.load.image('bground2', 'images/DC4F2704-263F-465C-BAB8-5C15682682D8.jpeg')
+    this.load.audio('music', ['music/Y2Mate.is - Old RuneScape Soundtrack Sea Shanty2-BJhF0L7pfo8-48k-1654852079074.mp3'])
 }
 
 // Creates walls ect
@@ -84,7 +75,7 @@ function create() {
     this.music.play(musicConfig);
 
     // Player physics
-    player = this.physics.add.sprite(0, 0, 'dude').setOffset(0, -5).setScale(1.3).setDepth(1).setSize(32, 32)
+    player = this.physics.add.sprite(0, 0, 'dude').setOffset(0, -5).setScale(1.3).setDepth(1)
     player.isCropped = false
     player.setCollideWorldBounds(true);
     player.setBounce(0.2);
@@ -152,7 +143,6 @@ function create() {
     //adds bomb physics
     bombs = this.physics.add.group();
     this.physics.add.collider(player, bombs, hitBomb, null, this)
-    
 
     this.initialTime = 0;
 
@@ -191,6 +181,8 @@ function formatTime(seconds) {
 
     return `${minutes}:${partInSeconds}`;
 
+
+
 }
 //Updates time text
 function onEvent() {
@@ -207,16 +199,16 @@ function onEvent() {
 
 
     if (score > 100) {
-        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1)
-        bomb.setVelocity(Phaser.Math.Between(-100, 100), 20);
+        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1).setSize(0.5)
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
         bomb.setCollideWorldBounds(false)
     } else {
         bomb = x
     }
 
     if (score > 200) {
-        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1)
-        bomb.setVelocity(Phaser.Math.Between(-100, 100), 20);
+        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1).setSize(0.5)
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
         bomb.setCollideWorldBounds(false)
 
     } else {
@@ -225,30 +217,27 @@ function onEvent() {
     //loads new background
 
     if (score > 300) {
-        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1)
-        bomb.setVelocity(Phaser.Math.Between(-100, 100), 20);
+        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1).setSize(0.5)
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
         this.add.image(400, 300, 'bground2')
         platforms = this.physics.add.staticGroup();
         platforms.create(397.5, 568, 'ground').setScale(2).refreshBody();
-        bomb.setCollideWorldBounds(false)
     } else {
         bomb = x
     }
     //spawns bombs but more
     if (score > 400) {
-        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1)
-        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1)
-        bomb.setVelocity(Phaser.Math.Between(-100, 100), 20);
-        bomb.setCollideWorldBounds(false)
+        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1).setSize(0.5)
+        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1).setSize(0.5)
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
     } else {
         bomb = x
     }
 
     if (score > 500) {
-        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1)
-        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1)
-        bomb.setVelocity(Phaser.Math.Between(-100, 100), 20);
-        bomb.setCollideWorldBounds(false)
+        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1).setSize(0.5)
+        var bomb = bombs.create(Phaser.Math.Between(0, 800), 0, 'bomb').setScale(0.2).setDepth(1).setSize(0.5)
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
     }
 
 
@@ -339,7 +328,7 @@ function collectStar(player, star) {
 }
 //Handles Lives and manages if you die and if you should restart ect
 function hitBomb(player, bomb) {
-    bomb.destroy()
+    bomb.setActive(false).setVisible(false)
     lives--
     if (lives <= 0) {
         this.physics.pause();
