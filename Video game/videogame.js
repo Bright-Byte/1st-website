@@ -21,6 +21,8 @@ var config = {
     }
 };
 
+game.debug.body(spritename);
+
 
 // Creates all game variables
 var game = new Phaser.Game(config);
