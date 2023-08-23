@@ -15,7 +15,7 @@ var config = {
             gravity: {
                 y: 800
             },
-            debug: true,
+            debug: false,
             overlapBias: 8,
             tileBias: 32,
             fps: 60,
