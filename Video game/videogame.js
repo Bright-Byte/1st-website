@@ -51,16 +51,16 @@ function init() {}
 
 // Preloads all imgs
 function preload() {
-    this.load.image('star', 'images/images/coin-removebg-preview_1_1_34.png')
-    this.load.image('bground', 'game/images/Custom dimensions 800x600 px.png');
-    this.load.image('bomb', 'game/images/bomb sprite.png')
-    this.load.image('ground', 'game/images/Floor.PNG')
-    this.load.spritesheet('dude', 'game/images/george.png', {
+    this.load.image('star', 'Video game/images/coin-removebg-preview_1_1_34.png')
+    this.load.image('bground', 'Video game/images/Custom dimensions 800x600 px.png');
+    this.load.image('bomb', 'Video game/images/bomb sprite.png')
+    this.load.image('ground', 'Video game/images/Floor.PNG')
+    this.load.spritesheet('dude', 'Video game/images/george.png', {
         frameWidth: 48,
         frameHeight: 48,
     });
-    this.load.image('bground2', 'game/images/DC4F2704-263F-465C-BAB8-5C15682682D8.jpeg')
-    this.load.audio('music', ['game/music/Y2Mate.is - Old RuneScape Soundtrack Sea Shanty2-BJhF0L7pfo8-48k-1654852079074.mp3'])
+    this.load.image('bground2', 'Video game/images/DC4F2704-263F-465C-BAB8-5C15682682D8.jpeg')
+    this.load.audio('music', ['Video game/music/Y2Mate.is - Old RuneScape Soundtrack Sea Shanty2-BJhF0L7pfo8-48k-1654852079074.mp3'])
 }
 
 // Creates walls ect
