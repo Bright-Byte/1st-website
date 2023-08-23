@@ -47,8 +47,8 @@ function preload() {
     this.load.image('bomb', 'images/bomb.png')
     this.load.image('ground', 'images/Floor.PNG')
     this.load.spritesheet('dude', 'images/george.png', {
-        frameWidth: 48,
-        frameHeight: 48
+        frameWidth: 30,
+        frameHeight: 30
     });
     this.load.image('bground2', 'images/DC4F2704-263F-465C-BAB8-5C15682682D8.jpeg')
     this.load.audio('music', ['music/Y2Mate.is - Old RuneScape Soundtrack Sea Shanty2-BJhF0L7pfo8-48k-1654852079074.mp3'])
