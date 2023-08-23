@@ -51,7 +51,7 @@ function init() {}
 
 // Preloads all imgs
 function preload() {
-    this.load.image('star', 'game/images/coin-removebg-preview_1_1_34.png')
+    this.load.image('star', 'images/images/coin-removebg-preview_1_1_34.png')
     this.load.image('bground', 'game/images/Custom dimensions 800x600 px.png');
     this.load.image('bomb', 'game/images/bomb sprite.png')
     this.load.image('ground', 'game/images/Floor.PNG')
