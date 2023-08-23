@@ -17,9 +17,6 @@ var config = {
             },
             debug: false,
             overlapBias: 8,
-            tileBias: 32,
-            fps: 60,
-            fixedStep: true
         }
     },
     scene: {
