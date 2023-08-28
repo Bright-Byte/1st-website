@@ -85,7 +85,7 @@ function create() {
     this.music.play(musicConfig);
 
     // Player physics
-    player = this.physics.add.sprite(0, 0, 'dude').setOffset(0, -5).setScale(1.3).setDepth(1).setSize(32, 32)
+    player = this.physics.add.sprite(0, 0, 'dude').setOffset(0, -5).setScale(1.3).setDepth(1).setSize(28, 28)
     player.isCropped = false
     player.setCollideWorldBounds(true);
     player.setBounce(0.2);
