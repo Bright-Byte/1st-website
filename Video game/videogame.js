@@ -2,7 +2,7 @@
 
 // HIGHSCORES:
 // TOM: 750!!!!!
-//JOSH: 630
+//JOSH: 870!!!!!!!!
 
 var config = {
     type: Phaser.AUTO,
