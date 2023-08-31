@@ -2,8 +2,8 @@
 
 // HIGHSCORES:
 // TOM: 750!!!!!
-//JOSH: 870!!!!!!!!
-//BLAKE BOOBGUNDA 780!!!
+//JOSH: 870!!!!!!!!!
+//BLAKE: 780!
 
 var config = {
     type: Phaser.AUTO,
@@ -47,22 +47,23 @@ var lives = 3
 var x
 var bomb
 var music
+// ill do highscore josh
+var highscore = 0;
 
 function init() {}
 
 // Preloads all imgs
-
 function preload() {
-    this.load.image('star', 'images/coin-removebg-preview_1_1_34.png')
-    this.load.image('bground', 'images/Custom dimensions 800x600 px.png');
-    this.load.image('bomb', 'images/bomb.png')
-    this.load.image('ground', 'images/Floor.PNG')
-    this.load.spritesheet('dude', 'images/george.png', {
+    this.load.image('star', 'game/images/coin-removebg-preview_1_1_34.png')
+    this.load.image('bground', 'game/images/Custom dimensions 800x600 px.png');
+    this.load.image('bomb', 'game/images/bomb sprite.png')
+    this.load.image('ground', 'game/images/Floor.PNG')
+    this.load.spritesheet('dude', 'game/images/george.png', {
         frameWidth: 48,
-        frameHeight: 48
+        frameHeight: 48,
     });
-    this.load.image('bground2', 'images/DC4F2704-263F-465C-BAB8-5C15682682D8.jpeg')
-    this.load.audio('music', ['music/Y2Mate.is - Old RuneScape Soundtrack Sea Shanty2-BJhF0L7pfo8-48k-1654852079074.mp3'])
+    this.load.image('bground2', 'game/images/DC4F2704-263F-465C-BAB8-5C15682682D8.jpeg')
+    this.load.audio('music', ['game/music/Y2Mate.is - Old RuneScape Soundtrack Sea Shanty2-BJhF0L7pfo8-48k-1654852079074.mp3'])
 }
 
 // Creates walls ect
@@ -86,7 +87,7 @@ function create() {
     this.music.play(musicConfig);
 
     // Player physics
-    player = this.physics.add.sprite(0, 0, 'dude').setOffset(0, -5).setScale(1.3).setDepth(1).setSize(28, 28)
+    player = this.physics.add.sprite(0, 0, 'dude').setOffset(0, -5).setScale(1.3).setDepth(1).setSize(32, 32)
     player.isCropped = false
     player.setCollideWorldBounds(true);
     player.setBounce(0.2);
@@ -181,6 +182,7 @@ function create() {
     });
 
     // scoreText.setText('Lives Remaining:' + lives)
+    document.getElementById('popup').style.display = "none";
 }
 
 //Calculate the timer numbers
@@ -332,7 +334,7 @@ function collectStar(player, star) {
         }
 
         //does bomb randomisning area, how quick bomb goes
-        var bomb = bombs.create(x, 0, 'bomb').setScale(0.2)
+        var bomb = bombs.create(x, 0, 'bomb').setScale(0.2).setDepth(1)
         bomb.setCollideWorldBounds(false)
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
         star.enableBody(true, star.x, 0, true, true);
@@ -344,6 +346,10 @@ function hitBomb(player, bomb) {
     bomb.destroy()
     lives--
     if (lives <= 0) {
+        if(score >= highscore) {
+            highscore = score
+            // endGameStuff()
+        }
         this.physics.pause();
         player.anims.play('stopped');
         player.setTint(0xff0000);
@@ -353,8 +359,14 @@ function hitBomb(player, bomb) {
             lives += 3
             score = 0
             this.music.stop();
+            restart()
         }
+        document.getElementById('popup').style.display = "flex";
     }
+}
+
+function restart() {
+    document.getElementById('popup').style.display = "none";
 }
 
 
@@ -368,3 +380,69 @@ var config = {
         create: create
     }
 };
+
+
+const endGameStuff = () => {
+    webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
+        // first add score to db
+        // then get leadboard and display
+        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        const d = new Date();
+        let year = d.getFullYear()
+        let month = months[d.getMonth()];
+        let day = d.getDate()
+        var username = document.querySelector('#username').value
+
+        webucate.db.run(`INSERT INTO leaderboard (username, score, date) VALUES ('${username}', ${highscore}, '${new Date(`${day}/${month}/${year}`)}')`);
+        
+        showLeaderBoard()
+    });
+}
+
+const showLeaderBoard = () => {
+    webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
+        document.querySelector('#leaderboard').innerHTML = `<div id="dayssince"></div>
+            <div class="row">
+                <div class="col">
+                    <h4>Rank</h4>
+                </div>
+                <div class="col">
+                    <h4>Player Name</h4>
+                </div>
+                <div class="col">
+                    <h4>Score</h4>
+                </div>
+            </div>
+            `
+        const leaderboard = webucate.db.run(`SELECT * FROM leaderboard ORDER BY score DESC`)
+
+        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        const d = new Date();
+        let year = d.getFullYear()
+        let month = months[d.getMonth()];
+        let day = d.getDate()
+
+        const sinceHighScoreTime = new Date(`${day}/${month}/${year}`).getTime() - new Date(`${leaderboard[0][0].date}`).getTime()
+        const daysSinceHighScore = sinceHighScoreTime / (1000 * 3600 * 24)
+        document.querySelector('#dayssince').innerHTML = `<span>There have been <b>${daysSinceHighScore}</b> days since the last highscore</span>`
+        for(let i = 0; i < leaderboard[0].length; i++) {
+            const row = document.createElement('div')
+            row.className = 'row'
+            let rank = String(i + 1)
+            row.innerHTML = ` 
+            <div class="col">
+                <span>${rank.padStart('3', '0')}</span>
+            </div>
+            <div class="col">
+                <span>${leaderboard[0][i].username}</span>
+            </div>
+            <div class="col">
+                <span>${leaderboard[0][i].score}</span>
+            </div>
+            `
+            document.querySelector('#leaderboard').appendChild(row)
+        }
+    })
+}
+
+showLeaderBoard()
