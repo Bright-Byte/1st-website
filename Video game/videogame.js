@@ -2,8 +2,7 @@
 
 // HIGHSCORES:
 // TOM: 750!!!!!
-//JOSH: 870!!!!!!!!!
-//BLAKE: 780!
+//JOSH: 630
 
 var config = {
     type: Phaser.AUTO,
@@ -47,8 +46,6 @@ var lives = 3
 var x
 var bomb
 var music
-// ill do highscore josh
-var highscore = 0;
 
 function init() {}
 
@@ -182,7 +179,6 @@ function create() {
     });
 
     // scoreText.setText('Lives Remaining:' + lives)
-    document.getElementById('popup').style.display = "none";
 }
 
 //Calculate the timer numbers
@@ -346,10 +342,6 @@ function hitBomb(player, bomb) {
     bomb.destroy()
     lives--
     if (lives <= 0) {
-        if(score >= highscore) {
-            highscore = score
-            // endGameStuff()
-        }
         this.physics.pause();
         player.anims.play('stopped');
         player.setTint(0xff0000);
@@ -359,15 +351,9 @@ function hitBomb(player, bomb) {
             lives += 3
             score = 0
             this.music.stop();
-            restart()
         }
-        // document.getElementById('popup').style.display = "flex";
     }
 }
-
-// function restart() {
-//     document.getElementById('popup').style.display = "none";
-// }
 
 
 var config = {
@@ -380,69 +366,3 @@ var config = {
         create: create
     }
 };
-
-
-// const endGameStuff = () => {
-//     webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
-//         // first add score to db
-//         // then get leadboard and display
-//         const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-//         const d = new Date();
-//         let year = d.getFullYear()
-//         let month = months[d.getMonth()];
-//         let day = d.getDate()
-//         var username = document.querySelector('#username').value
-
-//         webucate.db.run(`INSERT INTO leaderboard (username, score, date) VALUES ('${username}', ${highscore}, '${new Date(`${day}/${month}/${year}`)}')`);
-        
-//         showLeaderBoard()
-//     });
-// }
-
-// const showLeaderBoard = () => {
-//     webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
-//         document.querySelector('#leaderboard').innerHTML = `<div id="dayssince"></div>
-//             <div class="row">
-//                 <div class="col">
-//                     <h4>Rank</h4>
-//                 </div>
-//                 <div class="col">
-//                     <h4>Player Name</h4>
-//                 </div>
-//                 <div class="col">
-//                     <h4>Score</h4>
-//                 </div>
-//             </div>
-//             `
-//         const leaderboard = webucate.db.run(`SELECT * FROM leaderboard ORDER BY score DESC`)
-
-//         const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-//         const d = new Date();
-//         let year = d.getFullYear()
-//         let month = months[d.getMonth()];
-//         let day = d.getDate()
-
-//         const sinceHighScoreTime = new Date(`${day}/${month}/${year}`).getTime() - new Date(`${leaderboard[0][0].date}`).getTime()
-//         const daysSinceHighScore = sinceHighScoreTime / (1000 * 3600 * 24)
-//         document.querySelector('#dayssince').innerHTML = `<span>There have been <b>${daysSinceHighScore}</b> days since the last highscore</span>`
-//         for(let i = 0; i < leaderboard[0].length; i++) {
-//             const row = document.createElement('div')
-//             row.className = 'row'
-//             let rank = String(i + 1)
-//             row.innerHTML = ` 
-//             <div class="col">
-//                 <span>${rank.padStart('3', '0')}</span>
-//             </div>
-//             <div class="col">
-//                 <span>${leaderboard[0][i].username}</span>
-//             </div>
-//             <div class="col">
-//                 <span>${leaderboard[0][i].score}</span>
-//             </div>
-//             `
-//             document.querySelector('#leaderboard').appendChild(row)
-//         }
-//     })
-// }
-
-// showLeaderBoard()
