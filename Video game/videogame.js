@@ -361,13 +361,13 @@ function hitBomb(player, bomb) {
             this.music.stop();
             restart()
         }
-        document.getElementById('popup').style.display = "flex";
+        // document.getElementById('popup').style.display = "flex";
     }
 }
 
-function restart() {
-    document.getElementById('popup').style.display = "none";
-}
+// function restart() {
+//     document.getElementById('popup').style.display = "none";
+// }
 
 
 var config = {
@@ -382,67 +382,67 @@ var config = {
 };
 
 
-const endGameStuff = () => {
-    webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
-        // first add score to db
-        // then get leadboard and display
-        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-        const d = new Date();
-        let year = d.getFullYear()
-        let month = months[d.getMonth()];
-        let day = d.getDate()
-        var username = document.querySelector('#username').value
+// const endGameStuff = () => {
+//     webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
+//         // first add score to db
+//         // then get leadboard and display
+//         const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+//         const d = new Date();
+//         let year = d.getFullYear()
+//         let month = months[d.getMonth()];
+//         let day = d.getDate()
+//         var username = document.querySelector('#username').value
 
-        webucate.db.run(`INSERT INTO leaderboard (username, score, date) VALUES ('${username}', ${highscore}, '${new Date(`${day}/${month}/${year}`)}')`);
+//         webucate.db.run(`INSERT INTO leaderboard (username, score, date) VALUES ('${username}', ${highscore}, '${new Date(`${day}/${month}/${year}`)}')`);
         
-        showLeaderBoard()
-    });
-}
+//         showLeaderBoard()
+//     });
+// }
 
-const showLeaderBoard = () => {
-    webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
-        document.querySelector('#leaderboard').innerHTML = `<div id="dayssince"></div>
-            <div class="row">
-                <div class="col">
-                    <h4>Rank</h4>
-                </div>
-                <div class="col">
-                    <h4>Player Name</h4>
-                </div>
-                <div class="col">
-                    <h4>Score</h4>
-                </div>
-            </div>
-            `
-        const leaderboard = webucate.db.run(`SELECT * FROM leaderboard ORDER BY score DESC`)
+// const showLeaderBoard = () => {
+//     webucate.db.init('aa6xayyACv3msDwwz6ou').then(() => {
+//         document.querySelector('#leaderboard').innerHTML = `<div id="dayssince"></div>
+//             <div class="row">
+//                 <div class="col">
+//                     <h4>Rank</h4>
+//                 </div>
+//                 <div class="col">
+//                     <h4>Player Name</h4>
+//                 </div>
+//                 <div class="col">
+//                     <h4>Score</h4>
+//                 </div>
+//             </div>
+//             `
+//         const leaderboard = webucate.db.run(`SELECT * FROM leaderboard ORDER BY score DESC`)
 
-        const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-        const d = new Date();
-        let year = d.getFullYear()
-        let month = months[d.getMonth()];
-        let day = d.getDate()
+//         const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+//         const d = new Date();
+//         let year = d.getFullYear()
+//         let month = months[d.getMonth()];
+//         let day = d.getDate()
 
-        const sinceHighScoreTime = new Date(`${day}/${month}/${year}`).getTime() - new Date(`${leaderboard[0][0].date}`).getTime()
-        const daysSinceHighScore = sinceHighScoreTime / (1000 * 3600 * 24)
-        document.querySelector('#dayssince').innerHTML = `<span>There have been <b>${daysSinceHighScore}</b> days since the last highscore</span>`
-        for(let i = 0; i < leaderboard[0].length; i++) {
-            const row = document.createElement('div')
-            row.className = 'row'
-            let rank = String(i + 1)
-            row.innerHTML = ` 
-            <div class="col">
-                <span>${rank.padStart('3', '0')}</span>
-            </div>
-            <div class="col">
-                <span>${leaderboard[0][i].username}</span>
-            </div>
-            <div class="col">
-                <span>${leaderboard[0][i].score}</span>
-            </div>
-            `
-            document.querySelector('#leaderboard').appendChild(row)
-        }
-    })
-}
+//         const sinceHighScoreTime = new Date(`${day}/${month}/${year}`).getTime() - new Date(`${leaderboard[0][0].date}`).getTime()
+//         const daysSinceHighScore = sinceHighScoreTime / (1000 * 3600 * 24)
+//         document.querySelector('#dayssince').innerHTML = `<span>There have been <b>${daysSinceHighScore}</b> days since the last highscore</span>`
+//         for(let i = 0; i < leaderboard[0].length; i++) {
+//             const row = document.createElement('div')
+//             row.className = 'row'
+//             let rank = String(i + 1)
+//             row.innerHTML = ` 
+//             <div class="col">
+//                 <span>${rank.padStart('3', '0')}</span>
+//             </div>
+//             <div class="col">
+//                 <span>${leaderboard[0][i].username}</span>
+//             </div>
+//             <div class="col">
+//                 <span>${leaderboard[0][i].score}</span>
+//             </div>
+//             `
+//             document.querySelector('#leaderboard').appendChild(row)
+//         }
+//     })
+// }
 
-showLeaderBoard()
+// showLeaderBoard()
