@@ -216,17 +216,17 @@ function onEvent() {
 // updates movement from computer
 function update() {
     if (cursors.left.isDown) {
-        player.setVelocityX(-200);
+        player.setVelocityX(-300);
         player.anims.play('left', true)
     } else if (cursors.right.isDown) {
-        player.setVelocityX(200);
+        player.setVelocityX(300);
         player.anims.play('right', true)
     } else {
         player.setVelocityX(0);
         player.anims.play('stopped');
     }
     if (cursors.up.isDown && player.body.touching.down) {
-        player.setVelocityY(-200);
+        player.setVelocityY(-400);
     }
     if (timedEvent % 2) {
         var bomb = bomb.create(x, 0, 'bomb')
