@@ -19,6 +19,7 @@ var config = {
             tileBias: 32,
             fps: 60,
             fixedStep: true
+            
         }
     },
     scene: {
@@ -216,10 +217,10 @@ function onEvent() {
 // updates movement from computer
 function update() {
     if (cursors.left.isDown) {
-        player.setVelocityX(-300);
+        player.setVelocityX(-250);
         player.anims.play('left', true)
     } else if (cursors.right.isDown) {
-        player.setVelocityX(300);
+        player.setVelocityX(250);
         player.anims.play('right', true)
     } else {
         player.setVelocityX(0);
