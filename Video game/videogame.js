@@ -125,7 +125,7 @@ function create() {
         }
     })
     stars.children.iterate((star) => {
-        star.setBounce(Phaser.Math.FloatBetween(50, 50))
+        star.setBounce(Phaser.Math.FloatBetween(0.2, 0.4))
     })
     this.physics.add.collider(stars, platforms);
     this.physics.add.overlap(player, stars, collectStar, null, this);
