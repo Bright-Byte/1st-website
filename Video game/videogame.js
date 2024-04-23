@@ -228,7 +228,6 @@ function update() {
     }
     if (cursors.up.isDown && player.body.touching.down) {
         player.setVelocityY(-400);
-        player.setVelocityX(9000);
     }
     if (timedEvent % 2) {
         var bomb = bomb.create(x, 0, 'bomb')
