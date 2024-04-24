@@ -1,0 +1,23 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: black ;
+}
+
+#board {
+    background-image: url("./imgs/newyork.png");
+    background-repeat: repeat-x;
+    background-color: #426dbd;
+    background-position: center bottom;
+    animation: city 7s linear infinite;
+}
+
+@keyframes city {
+    0% {
+        background-position: 0px 100%;
+    }
+
+    100% {
+        margin-left: 275px 100%
+    }
+}
