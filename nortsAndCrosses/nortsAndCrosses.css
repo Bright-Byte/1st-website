@@ -3,18 +3,24 @@
     padding: 0;
 }
 
+:root {
+    --animation-time: 2s; 
+    --mark-size: calc(var(-cell-size) * .9)
+  }
+
 body {
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
-    background-color: black;
+    background-color: #0e0b16;
     font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
 header {
     height: 10vh;
-    background-color: red;
+    background-color: #61D1E5 ;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,24 +28,67 @@ header {
     padding: 0px 100px;
 }
 
-#return, #tooltip {
+#return, #tooltip, #music{
     width: 10%;
-    height: 80%;
-    background-color: blue;
+    height: 60%;
+    background-color: #91FAC1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 7px;
+    font-size: 16px;
+    position: relative;
+    border-radius: 4em;
 }
 
-#return:hover, #tooltip:hover {
-    background-color: yellow;
+#return:hover, #tooltip:hover, #music:hover {
+    background-color: palegoldenrod;
     cursor: pointer;
     transition: .2s ease-in;
 }
 
+#return:after,
+#tooltip:after,
+#music:after{
+    content: "";
+    display: block;
+    position: absolute; 
+    border-radius: 4em;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 0 10px 20px white;
+}
+
+#return:active:after,
+#tooltip:active:after,
+#music:active:after {
+    box-sizing: 0 0 0 0 white;
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: 0s;
+}
+
+#return:active,
+#tooltip:active,
+#music:active {
+    top: 1px;
+}
+
+
 a {
     color: black;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #tooltip .tooltiptxt {
@@ -50,11 +99,13 @@ a {
     text-align: center;
     position: absolute;
     z-index: 1;
-    margin-top: 160px;
+    margin-top: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
+    width: 250px;
+    height: 100px;
 }
 
 #tooltip:hover .tooltiptxt {
@@ -68,6 +119,175 @@ a {
     background-color: white;
     transform: rotate(45deg);
     position: absolute;
-    margin-bottom: 100px;
+    top: 0;
+    margin-bottom: 10px;
 }
 
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 100vw;
+}
+
+#wrapper {
+    width: 100vw;
+    height: 90vh;
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.board {
+    position: absolute;
+    width: 100vw;
+    height: 90vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell.cell:nth-child(3) {
+    border-top: 2px solid red;
+}
+
+.cell:nth-child(3n + 1) {
+    border-left: 2px solid red;
+}
+
+.cell:nth-child(3n + 3) {
+    border-right: 2px solid red;
+}
+
+.cell:nth-child(6),
+.cell:nth-child(7),
+.cell.cell:last-child {
+    border-bottom: 2px solid red;
+}
+
+.cell.x::before,
+.cell::after {
+    content: '';
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    background-color: blue;
+
+}
+
+/* BACKGROUND ANIMATION */
+
+#animations li {
+    position: absolute;
+    display: block;
+    height: 45px;
+    width: 45px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 20s linear infinite;
+    bottom: -150px;
+}
+
+#animations li:nth-child(1) {
+    left: 12%;
+	animation-delay: 1.5s;
+	animation-duration: 19s;
+}
+
+#animations li:nth-child(2) {
+    left: 20%;
+	width: 50px;
+	height: 50px;
+	animation-delay: 3s;
+	animation-duration: 13s;
+}
+
+#animations li:nth-child(3) {
+    left: 30%;
+	width: 20px;
+	height: 20px;
+	animation-delay: 5.5s;
+	animation-duration: 12s;
+}
+
+#animations li:nth-child(4) {
+    left: 35%;
+	width: 80px;
+	height: 80px;
+	animation-delay: 8.5s;
+	animation-duration: 13s;
+}
+
+#animations li:nth-child(5) {
+    left: 40%;
+	animation-delay: 4s;
+	animation-duration: 15s;
+}
+
+#animations li:nth-child(6) {
+    left: 45%;
+	width: 70px;
+	height: 70px;
+	animation-delay: 0.5s;
+	animation-duration: 20s;
+}
+
+#animations li:nth-child(7) {
+    left: 60%;
+	animation-delay: 4.5s;
+	animation-duration: 14s;
+}
+
+#animations li:nth-child(8) {
+    left: 75%;
+	width: 30px;
+	height: 30px;
+	animation-delay: 1.5s;
+	animation-duration: 20s;
+}
+
+#animations li:nth-child(9) {
+    left: 85%;
+	width: 100px;
+	height: 100px;
+	animation-delay: 3.5s;
+	animation-duration: 25s;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(-1500px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    #board {
+        height: 420px;
+        width: 490px;
+    }
+
+    .tile {
+        height: 50px;
+        width: 50px;
+    }
+}
