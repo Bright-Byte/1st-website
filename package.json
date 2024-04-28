@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "open": "start http://localhost:5500"
   },
   "author": "",
   "license": "ISC",
