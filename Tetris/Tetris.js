@@ -1,6 +1,6 @@
 //board
 
-const fps = 60;
+const fps = 120;
 
 let board;
 let boardWidth = 420;
