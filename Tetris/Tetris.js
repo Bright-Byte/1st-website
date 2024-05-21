@@ -1,7 +1,5 @@
 //board
 
-const framerate(24);
-
 let board;
 let boardWidth = 420;
 let boardHeight = 720;
