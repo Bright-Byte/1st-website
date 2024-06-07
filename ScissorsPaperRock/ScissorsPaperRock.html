@@ -5,22 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ScissorsPaperRock.css">
-    <script src="ScissorsPaperRock/ScissorsPaperRock.js" defer></script>
+    <script src="ScissorsPaperRock.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <title>hello</title>
 </head>
 <body>
     <header>
-        <div id="return">
-            <a href="../index.html">
-                Return to menu
-            </a>
-        </div>
-        <div id="tooltip">How to play.
-            <span class="tooltiptxt"> The objective to connect 4 is to get 4 tiles in a row your colour horizontally vertically or diagonally before your opponent.
-                <div class="arrow"></div>
-            </span>
-        </div>
+            <h1>Emulated Games!</h1>
+            <button id="button" onclick="reset()">Back to Menu</button>
     </header>
+    <main>
+        <!-- top portion -->
+        <div id="topper">
+            <p>Play your favourite video games from the past, completely for free!</p>
+            <input id="input" type="text" placeholder="Search for your favourite game!">
+        </div>
+        <div id="cardContainer">
+        </div>
+    </main>
+    <footer></footer>
 </body>
-</html>
