@@ -33,7 +33,7 @@ const data = {
 
     `<iframe src="https://static.arcadespot.com/retroemulator.php?system=gba&amp;game=2017/09/doom-2.zip" border="0" frameborder="0" scrolling="no" style="border: 0px; width: 600px; height: 400px;" id="game-box-iframe" allowfullscreen="allowfullscreen" allow="autoplay; fullscreen; microphone; gamepad; accelerometer; encrypted-media; gyroscope;"></iframe>`,
 
-    `<iframe id="iframehtml5" width="100%" title="Papa's Pizzeria" height="560" src="https://papaspizzeria.io/papas-pizzeria.embed" frameborder="0" border="0" scrolling="no" class="iframe-default" allowfullscreen=""></iframe>`
+    `        <iframe id="iframe-in-game" src="https://www.gameflare.com/embed/papa-s-pizzeria/" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="800" height="635" allow="autoplay; fullscreen" allowfullscreen="" onload="iframeInGameLoaded(10)"></iframe>`
 
     ],
     controls: ["X for the A button, Save fweeeeeeeeeeeeeee yyyyyyyyyyyyyyyyyyyyyyyywrwwddddddddddd fewwwrqrertgert htryhrtyeryeyer ge yur (whoever is looking at this code TOM, JADEN i might add this later if u want u can playtest and send me the controls lol)"],
