@@ -13,10 +13,10 @@
 //array
 
 const data = {
-    name: ["Pokemon Ruby", "Drift Hunters", "Slope", "Kirby", "Fireboy Watergirl", "Cut the Rope", "Doom", "Papas Pizzeria"],
-    img: [`https://www.nintendo.com/eu/media/images/10_share_images/games_15/game_boy_advance_7/SI_GBA_PokemonRuby_enGB_image1600w.jpg`, `https://drifthunters2.io/data/image/favicon.png`, `https://wordle2.io/upload/imgs/screenshot-2023-10-15-012641.png`, `https://upload.wikimedia.org/wikipedia/en/6/6a/Kirbys-dream-land-gameboy-boxart.png`, `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlQWEwPf0hgBQaEp2S8mBj66tdWTYHy-bV-w&s`, `https://img.cdn.famobi.com/portal/html5games/images/tmp/CutTheRopeTeaser.jpg`, `https://upload.wikimedia.org/wikipedia/en/2/29/Doom_II_-_Hell_on_Earth_Coverart.png`, `https://img.poki.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/377fd7d97c2b2f4fe25618ccffcc601b.jfif`],
+    name: ["Pokemon Ruby", "Drift Hunters", "Slope", "Kirby", "Fireboy Watergirl", "Cut the Rope", "Doom", "Papas Pizzeria", "Geometry Dash"],
+    img: [`https://www.nintendo.com/eu/media/images/10_share_images/games_15/game_boy_advance_7/SI_GBA_PokemonRuby_enGB_image1600w.jpg`, `https://drifthunters2.io/data/image/favicon.png`, `https://wordle2.io/upload/imgs/screenshot-2023-10-15-012641.png`, `https://upload.wikimedia.org/wikipedia/en/6/6a/Kirbys-dream-land-gameboy-boxart.png`, `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlQWEwPf0hgBQaEp2S8mBj66tdWTYHy-bV-w&s`, `https://img.cdn.famobi.com/portal/html5games/images/tmp/CutTheRopeTeaser.jpg`, `https://upload.wikimedia.org/wikipedia/en/2/29/Doom_II_-_Hell_on_Earth_Coverart.png`, `https://img.poki.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/377fd7d97c2b2f4fe25618ccffcc601b.jfif`, `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHDOK3s4lILVXrLU5z2S4Pgei1YRHqTpVeEg&s`],
     
-    description: ["Play Pokemon Ruby now, catch and train as many pokemon as possible to become champion", "Due to popular demand, drift your way to the top in drift racers!", "Play slope now, and roll your way to a new highscore", "Play Kirby now and suck your way into the action!", "Have fun puzzeling with your friend with OG fireboy and watergirl", "Play cut the rope now, an OG classic that is one of the most EPIC phone games of all time", "Yes, we have DOOM 2 play now please (Mouse for controls)", "Have fun in papas pizzeia, and make the best food known to man", "subway surfers brainrot epic W"],
+    description: ["Play Pokemon Ruby now, catch and train as many pokemon as possible to become champion", "Due to popular demand, drift your way to the top in drift racers!", "Play slope now, and roll your way to a new highscore", "Play Kirby now and suck your way into the action!", "Have fun puzzeling with your friend with OG fireboy and watergirl", "Play cut the rope now, an OG classic that is one of the most EPIC phone games of all time", "Yes, we have DOOM 2 play now please (Mouse for controls)", "Have fun in papas pizzeia, and make the best food known to man", "Jump through obsticles in geometry dash now!"],
 
     iframe: [`<iframe src="https://www.retrogames.cc/embed/26523-pokemon-ruby-e-independent.html" width="600" height="450" frameborder="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" scrolling="no"></iframe>`, 
     
@@ -33,7 +33,9 @@ const data = {
 
     `<iframe src="https://static.arcadespot.com/retroemulator.php?system=gba&amp;game=2017/09/doom-2.zip" border="0" frameborder="0" scrolling="no" style="border: 0px; width: 600px; height: 400px;" id="game-box-iframe" allowfullscreen="allowfullscreen" allow="autoplay; fullscreen; microphone; gamepad; accelerometer; encrypted-media; gyroscope;"></iframe>`,
 
-    `<iframe id="iframe-in-game" src="https://www.gameflare.com/embed/papa-s-pizzeria/" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="800" height="635" allow="autoplay; fullscreen" allowfullscreen="" onload="iframeInGameLoaded(10)"></iframe>`
+    `<iframe id="iframe-in-game" src="https://www.gameflare.com/embed/papa-s-pizzeria/" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="800" height="635" allow="autoplay; fullscreen" allowfullscreen="" onload="iframeInGameLoaded(10)"></iframe>`,
+
+    `<iframe class="iframe-default" id="iframehtml5" title="Geometry Dash Full Version" width="100%" height="600px" src="/geometry-dash-full-version.embed" frameborder="0" border="0" scrolling="auto" allowfullscreen=""></iframe>`
     ],
     controls: ["X for the A button, Save fweeeeeeeeeeeeeee yyyyyyyyyyyyyyyyyyyyyyyywrwwddddddddddd fewwwrqrertgert htryhrtyeryeyer ge yur (whoever is looking at this code TOM, JADEN i might add this later if u want u can playtest and send me the controls lol)"],
 }
